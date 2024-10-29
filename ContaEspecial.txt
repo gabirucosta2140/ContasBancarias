@@ -1,0 +1,105 @@
+package classeAbstrata;
+
+/*1) Implemente a hierarquia de classes ContaBancaria (superclasse), ContaCorrente (com
+senha, número, saldo e quantidade de transações realizadas) e ContaEspecial (com senha,
+número, saldo, transações realizadas e limite).
+• quando uma ContaBancaria for criada, informe a senha da conta por parâmetro.
+• na classe ContaBancaria, crie os seguintes métodos abstratos:
+• saca(double valor)
+• deposita(double valor)
+• tiraExtrato() – que informa o saldo disponível e a quantidade de transações realizadas
+na conta. Quando se tratar de uma conta especial deve mostrar o saldo, o limite e o
+total disponível.
+• nesta mesma classe, crie o método alteraSenha, que recebe uma senha por parâmetro e
+deve confirmar a senha anterior (via teclado), e somente se a senha anterior estiver correta a
+senha recebida por parâmetro deve ser atribuída.
+• implemente os métodos abstratos nas classes ContaCorrente e ContaEspecial.
+• crie os métodos de acesso para os atributos de ContaCorrente e ContaEspecial.*/
+
+public class ContaEspecial extends ContaBancaria{
+
+	private String numero;
+	private double saldo;
+	private int quantidadeTransacoes;
+	private double limite;
+	
+	
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	public int getQuantidadeTransacoes() {
+		return quantidadeTransacoes;
+	}
+
+	public void setQuantidadeTransacoes(int quantidadeTransacoes) {
+		this.quantidadeTransacoes = quantidadeTransacoes;
+	}
+
+	public double getLimite() {
+		return limite;
+	}
+
+	public void setLimite(double limite) {
+		this.limite = limite;
+	}
+
+	public ContaEspecial(String senha,String numero, double saldo, double limite) {
+		super(senha);
+		this.numero = numero;
+		this.limite = limite;
+		this.saldo = saldo;
+		this.quantidadeTransacoes = 0;
+	}
+
+	@Override
+	public void saca(double valor) {
+		if(valor > 0 && valor <= this.saldo + this.limite) {
+			
+				
+				saldo -= valor;
+				quantidadeTransacoes++;
+				
+			
+			
+		}else {
+			System.out.println("Impossível realizar transação!");
+		}
+		
+		
+	}
+
+	@Override
+	public void deposita(double valor) {
+		if(valor > 0) {
+			saldo += valor;
+			quantidadeTransacoes++;
+			
+		}else {
+			System.out.println("Impossível realizar transação!");
+		}
+
+		
+	}
+
+	@Override
+	public String tiraExtrato() {
+		
+		
+		
+		return "Saldo disponível: R$ " + this.saldo + " ; Limite: R$ " + this.limite + " ; Quantidade de Transações: R$ " + this.quantidadeTransacoes;
+	}
+
+}

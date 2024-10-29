@@ -1,0 +1,116 @@
+package classeAbstrata;
+
+import java.util.Scanner;
+
+/*2) - Crie uma classe de teste para testar a hierarquia do exercício acima.
+• pergunte (via teclado) quantas contas o usuário deseja criar e crie-as (com a utilização de
+arrays para armazenar as contas.
+• a cada conta criada, pergunte ao usuário se trata-se de uma ContaCorrente ou de uma
+ContaEspecial, e crie a conta de acordo com o informado pelo usuário.
+• após as contas terem sido criadas, informe o valor dos atributos de cada conta armazenada.
+• realize saques, depósitos e extratos nestas contas.
+• imprima a quantidade de transações realizadas nas contas criadas.*/
+
+public class App {
+
+	public static void main(String[] args) {
+		int i;
+		String senha;
+		String numero;
+		double saldo;
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Quantas contas bancárias você deseja criar?");
+		int numeroContas = scan.nextInt();
+		System.out.println("Deseja conta corrente ou especial (1 para corrente, 2 para especial)?");
+		int tipoConta = scan.nextInt();
+		
+		switch(tipoConta) {
+		
+		case 1:
+			
+			ContaCorrente contasCorrentes[] = new ContaCorrente[numeroContas];
+			
+		
+			 
+			
+			 try {
+			for(i = 0; i < numeroContas; i++) {
+				
+				
+				System.out.println("Digite o número da conta:");
+				numero = scan.next();
+				
+				System.out.println("Digite o número da conta:");
+				senha = scan.next();
+				
+				
+				System.out.println("Digite o número da conta:");
+				saldo = scan.nextDouble();
+				
+				contasCorrentes[i] = new ContaCorrente(senha, numero, saldo);
+				
+			}
+			 }catch(Exception e) {
+					System.out.println("Erro ao inserir dados!");		
+				}
+			 
+			 
+			break;
+			
+		case 2:
+			
+			ContaEspecial contasEspeciais[] = new ContaEspecial[numeroContas];
+			double limite;
+			
+			try {
+				
+				for(i = 0; i < numeroContas; i++) {
+					
+					
+				
+				System.out.println("Digite o número da conta:");
+				numero = scan.next();
+				
+				System.out.println("Digite a senha da conta:");
+				senha = scan.next();
+				
+				
+				System.out.println("Digite o número da conta:");
+				saldo = scan.nextDouble();
+				
+				System.out.println("Digite o limite da conta:");
+				limite = scan.nextDouble();
+				
+				contasEspeciais[i] = new ContaEspecial(senha, numero, saldo, limite);
+				
+				}
+			}catch(Exception e) {
+				System.out.println("Erro ao inserir dados!");
+				
+			}
+			
+			
+			
+			break;
+			
+	default:
+		System.out.println("Tipo incorreto!");
+		break;
+
+		}
+		
+		
+		
+		
+		scan.close();
+		
+		
+	}
+
+	
+	public static void sacar(Scanner scan, double valor, ContaCorrente,	) {
+		
+		
+	}
+	
+}
